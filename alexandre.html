@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Form Validation</title>
+  <style type="text/css">
+  .set{
+      width: 70px;
+     border-radius: 8px;
+     box-shadow: 5px 4px 3px;
+     background-color: azure;
+
+    }
+
+    .label{
+
+      border-radius: 5px;
+      background-color: pink;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <img src="">
+  </div>
+
+<center><fieldset class="set">
+  
+  <legend>Form validation</legend>
+
+  <form id="myForm">
+  
+  <label for="name">Name :</label>
+  <input type="text" name="name" required  class="label"><br><br>
+
+  <label for="email" class="label">Email :</label>
+  <input type="text" name="email" required  class="label"><br><br>
+
+  <label for="phone" class="label">Phone :</label>
+  <input type="text" name="phone" class="label"><br><br>
+
+  <button type="submit" class="label">Submit</button>
+</form>
+
+</fieldset>
+</center>
+<script>
+  document.getElementById('myForm').addEventListener('submit', function(e) {
+    const inputs = this.querySelectorAll('input[type="text"][required]');
+    for (let i = 0; i < inputs.length; i++) {
+      if (inputs[i].value.trim() === '') {
+        alert('Please fill out the required field: ' + inputs[i].name);
+        inputs[i].focus();
+        e.preventDefault(); // stop form submission
+        return;
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
